@@ -1,0 +1,6 @@
+@isbwc.Server_HostAddress = http://localhost:5238
+
+GET {{isbwc.Server_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

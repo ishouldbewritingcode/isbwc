@@ -1,0 +1,18 @@
+## .NET
+bin/
+obj/
+*.user
+*.db
+*.db-shm
+*.db-wal
+
+## Visual Studio
+.vs/
+
+## Node / client
+node_modules/
+isbwc.client/dist/
+
+## OS
+.DS_Store
+Thumbs.db

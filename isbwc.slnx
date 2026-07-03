@@ -1,0 +1,7 @@
+<Solution>
+  <Project Path="isbwc.client/isbwc.client.esproj">
+    <Build />
+    <Deploy />
+  </Project>
+  <Project Path="isbwc.Server/isbwc.Server.csproj" />
+</Solution>
