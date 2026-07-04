@@ -3,8 +3,8 @@
     <Build />
     <Deploy />
   </Project>
-  <Project Path="src/Domain/isbwc.Domain.csproj" />
-  <Project Path="src/Application/isbwc.Application.csproj" />
-  <Project Path="src/Infrastructure/isbwc.Infrastructure.csproj" />
-  <Project Path="src/WebApi/isbwc.WebApi.csproj" />
+  <Project Path="Domain/isbwc.Domain.csproj" />
+  <Project Path="Application/isbwc.Application.csproj" />
+  <Project Path="Infrastructure/isbwc.Infrastructure.csproj" />
+  <Project Path="WebApi/isbwc.WebApi.csproj" />
 </Solution>

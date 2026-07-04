@@ -153,12 +153,12 @@ Migration commands:
 
 Create migration:
 
-dotnet ef migrations add MigrationName -p src/Infrastructure -s
-src/WebApi
+dotnet ef migrations add MigrationName -p Infrastructure -s
+WebApi
 
 Update database:
 
-dotnet ef database update -p src/Infrastructure -s src/WebApi
+dotnet ef database update -p Infrastructure -s WebApi
 
 ------------------------------------------------------------------------
 
