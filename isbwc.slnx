@@ -1,5 +1,5 @@
 <Solution>
-  <Project Path="isbwc.client/isbwc.client.esproj">
+  <Project Path="Client/isbwc.client.esproj">
     <Build />
     <Deploy />
   </Project>
