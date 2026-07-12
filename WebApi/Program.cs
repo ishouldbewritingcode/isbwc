@@ -1,8 +1,8 @@
 using isbwc.Application;
 using isbwc.Application.Common;
 using isbwc.Infrastructure;
+using isbwc.Infrastructure.CMSSiteResolution;
 using isbwc.Infrastructure.Persistence;
-using isbwc.Infrastructure.Tenancy;
 using Microsoft.EntityFrameworkCore;
 using Scalar.AspNetCore;
 
@@ -29,7 +29,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-app.UseMiddleware<TenantResolutionMiddleware>();
+app.UseMiddleware<CMSSiteResolutionMiddleware>();
 
 app.MapHealthChecks("/health");
 

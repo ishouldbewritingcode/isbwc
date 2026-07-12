@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace isbwc.Infrastructure.Persistence;
 
-public sealed class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options, ITenantContext tenantContext)
+public sealed class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options, ICMSSiteContext cmsSiteContext)
 	: DbContext(options), IApplicationDbContext
 {
 	public DbSet<CMSSite> Sites => Set<CMSSite>();
@@ -51,10 +51,10 @@ public sealed class ApplicationDbContext(DbContextOptions<ApplicationDbContext> 
 		// CMSSite and CMSSiteUrl are intentionally NOT tenant-filtered: resolving the
 		// current tenant from the request Host requires querying CMSSiteUrl across all
 		// tenants, and site administration needs to list/manage every CMSSite.
-		modelBuilder.Entity<CMSPage>().HasQueryFilter(e => e.SiteId == tenantContext.SiteId);
-		modelBuilder.Entity<CMSBlock>().HasQueryFilter(e => e.SiteId == tenantContext.SiteId);
-		modelBuilder.Entity<CMSFile>().HasQueryFilter(e => e.SiteId == tenantContext.SiteId);
-		modelBuilder.Entity<CMSUser>().HasQueryFilter(e => e.SiteId == tenantContext.SiteId);
+		modelBuilder.Entity<CMSPage>().HasQueryFilter(e => e.SiteId == cmsSiteContext.SiteId);
+		modelBuilder.Entity<CMSBlock>().HasQueryFilter(e => e.SiteId == cmsSiteContext.SiteId);
+		modelBuilder.Entity<CMSFile>().HasQueryFilter(e => e.SiteId == cmsSiteContext.SiteId);
+		modelBuilder.Entity<CMSUser>().HasQueryFilter(e => e.SiteId == cmsSiteContext.SiteId);
 
 		// CMSPageBlock and CMSItem don't carry SiteId directly; they're protected
 		// transitively through their Page/Block parent and are left unfiltered here.

@@ -1,6 +1,6 @@
 namespace isbwc.Application.Common;
 
-public interface ITenantContext
+public interface ICMSSiteContext
 {
 	Guid SiteId { get; }
 }

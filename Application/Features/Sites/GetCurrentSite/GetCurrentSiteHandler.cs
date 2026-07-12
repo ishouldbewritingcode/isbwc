@@ -3,11 +3,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace isbwc.Application.Features.Sites.GetCurrentSite;
 
-public sealed class GetCurrentSiteHandler(IApplicationDbContext db, ITenantContext tenantContext) : IHandler<GetCurrentSiteQuery, SiteResponse>
+public sealed class GetCurrentSiteHandler(IApplicationDbContext db, ICMSSiteContext cmsSiteContext) : IHandler<GetCurrentSiteQuery, SiteResponse>
 {
 	public async Task<Result<SiteResponse>> Handle(GetCurrentSiteQuery request, CancellationToken cancellationToken)
 	{
-		var site = await db.Sites.AsNoTracking().FirstOrDefaultAsync(s => s.SiteId == tenantContext.SiteId, cancellationToken);
+		var site = await db.Sites.AsNoTracking().FirstOrDefaultAsync(s => s.SiteId == cmsSiteContext.SiteId, cancellationToken);
 		if (site is null)
 		{
 			return Result.Failure<SiteResponse>(Error.NotFound("Site.NotFound", "No site could be resolved for the current request host."));

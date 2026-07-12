@@ -2,11 +2,11 @@ using isbwc.Infrastructure.Persistence;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 
-namespace isbwc.Infrastructure.Tenancy;
+namespace isbwc.Infrastructure.CMSSiteResolution;
 
-public sealed class TenantResolutionMiddleware(RequestDelegate next)
+public sealed class CMSSiteResolutionMiddleware(RequestDelegate next)
 {
-	public async Task InvokeAsync(HttpContext context, ApplicationDbContext db, TenantContext tenantContext)
+	public async Task InvokeAsync(HttpContext context, ApplicationDbContext db, CMSSiteContext cmsSiteContext)
 	{
 		var host = context.Request.Host.Host;
 
@@ -16,7 +16,7 @@ public sealed class TenantResolutionMiddleware(RequestDelegate next)
 
 		if (siteUrl is not null)
 		{
-			tenantContext.SiteId = siteUrl.SiteId;
+			cmsSiteContext.SiteId = siteUrl.SiteId;
 		}
 
 		// No match just means SiteId stays unset (Guid.Empty) - only tenant-filtered
