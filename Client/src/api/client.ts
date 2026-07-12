@@ -1,0 +1,21 @@
+export class ApiError extends Error {
+  status: number;
+
+  constructor(status: number, message: string) {
+    super(message);
+    this.name = 'ApiError';
+    this.status = status;
+  }
+}
+
+export async function apiGet<T>(path: string): Promise<T> {
+  const response = await fetch(path, {
+    headers: { Accept: 'application/json' },
+  });
+
+  if (!response.ok) {
+    throw new ApiError(response.status, `${response.status} ${response.statusText} for ${path}`);
+  }
+
+  return (await response.json()) as T;
+}
