@@ -1,6 +1,6 @@
-using Microsoft.AspNetCore.Http;
+using isbwc.Application.Common;
 
-namespace isbwc.Application.Common;
+namespace isbwc.WebApi.Common;
 
 public static class ResultExtensions
 {

@@ -1,8 +1,6 @@
 using FluentValidation;
-using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.DependencyInjection;
 
-namespace isbwc.Application.Common;
+namespace isbwc.WebApi.Common;
 
 public sealed class ValidationFilter<TCommand> : IEndpointFilter
 {

@@ -1,15 +1,15 @@
 using isbwc.Application.Common;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Routing;
+using isbwc.Application.Features.Pages;
+using isbwc.Application.Features.Pages.GetPageById;
+using isbwc.WebApi.Common;
 
-namespace isbwc.Application.Features.Pages.GetPageById;
+namespace isbwc.WebApi.Endpoints.Pages.GetPageById;
 
 public sealed class GetPageByIdEndpoint : IEndpoint
 {
 	public void MapEndpoint(IEndpointRouteBuilder app)
 	{
-		app.MapGet("/api/pages/{id:guid}", async (Guid id, IHandler<GetPageByIdQuery, PageResponse> handler, CancellationToken cancellationToken) =>
+		app.MapGet("/pages/{id:guid}", async (Guid id, IHandler<GetPageByIdQuery, PageResponse> handler, CancellationToken cancellationToken) =>
 		{
 			var result = await handler.Handle(new GetPageByIdQuery(id), cancellationToken);
 			return result.IsSuccess ? Results.Ok(result.Value) : result.Error.ToProblem();

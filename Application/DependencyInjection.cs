@@ -19,11 +19,6 @@ public static class DependencyInjection
 			{
 				services.AddTransient(handlerInterface, type);
 			}
-
-			if (typeof(IEndpoint).IsAssignableFrom(type))
-			{
-				services.AddTransient(typeof(IEndpoint), type);
-			}
 		}
 
 		services.AddValidatorsFromAssembly(assembly);

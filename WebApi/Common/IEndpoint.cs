@@ -1,6 +1,4 @@
-using Microsoft.AspNetCore.Routing;
-
-namespace isbwc.Application.Common;
+namespace isbwc.WebApi.Common;
 
 public interface IEndpoint
 {

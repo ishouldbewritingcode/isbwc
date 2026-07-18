@@ -41,7 +41,7 @@ Domain
 Infrastructure - Implements persistence and external services - Depends
 on Application and Domain
 
-WebApi - Application entry point - Composes dependencies and middleware
+WebApi - Application entry point, endpoints - Composes dependencies and middleware
 
 ------------------------------------------------------------------------
 
